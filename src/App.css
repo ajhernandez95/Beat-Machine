@@ -10,7 +10,6 @@ html {
   height: 100%;
 }
 
-
 #drum-machine {
   display: flex;
   flex-direction: row;
@@ -23,46 +22,61 @@ html {
 }
 
 .pad-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 50%;
   background-color: pink;
 }
 
+.drum-pad {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 6px;
+  margin: 0 15px 0 15px;
+  background-color: rgb(0, 255, 179);
+}
+
 .ctrl-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 50%;
   background-color: green;
 }
 
+.switch-wrap {
+  width: 20%;
+  height: 20px;
+  background-color: white;
+}
+
 .switch {
- width: 20%;
- height: 20px;
- background-color: white;
+  height: 100%;
+  width: 50%;
+  background-color: brown;
 }
 
-.drum-pad {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 70px;
-  border-radius: 6px;
-  background-color: rgb(0, 255, 179);
+.sound-wrap {
+  background-color: brown;
 }
 
-
-
-.row-one {
-  display: flex;
-  
+.bank-wrap {
+  width: 20%;
+  height: 20px;
+  background-color: white;
 }
 
-.row-two {
-  display: flex;
-  
-}
-
-.row-three {
-  display: flex;
-  
+.bank {
+  height: 100%;
+  width: 50%;
+  background-color: brown;
 }
 
 h1 {
