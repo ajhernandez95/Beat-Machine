@@ -1,23 +1,40 @@
 import React, { Component } from "react";
 import "./App.css";
 
+//let audio = new Audio('https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3')
+
+
+
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
 
     }
-   this.onClick = this.onClick.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
-  onClick(e) {
-    audio.play
+
+  onClick() { 
+    document.getElementById('sound').play()
   }
   render() {
-    let audio = new Audio('https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3')
     return (
       <div id="drum-machine">
         <div id='display'>
-        <h1>here</h1>
+          <div class='drum-pad-wrapper'>
+            <div class='drum-pad' id='' onClick={this.onClick}>
+            <audio id='sound' src='https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3' preload></audio>
+            <p>Q</p>
+            </div>
+            <div class='drum-pad' id=''><p>W</p></div>
+            <div class='drum-pad' id=''><p>E</p></div>
+            <div class='drum-pad' id=''><p>A</p></div>
+            <div class='drum-pad' id=''><p>S</p></div>
+            <div class='drum-pad' id=''><p>D</p></div>
+            <div class='drum-pad' id=''><p>Z</p></div>
+            <div class='drum-pad' id=''><p>X</p></div>
+            <div class='drum-pad' id=''><p>C</p></div>
+          </div>
         </div>
       </div>
     );
