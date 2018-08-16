@@ -8,17 +8,16 @@ class App extends Component {
     super(props);
     this.state = {};
     this.onClick = this.onClick.bind(this)
-    this.getId = this.getId.bind(this)
+   
   }
 
-  getId(e) {
-    return e.target.getAttribute('id')
-  }
 
   onClick(e) {
-    document.getElementById('sound').play();
+    let itemId = JSON.stringify(e.target.getAttribute('id'))
+    document.getElementById(itemId).style.backgroundColor = 'blue'
+    console.log(itemId)
     
-    console.dir(document)
+    
   }
   render() {
     return (
@@ -31,31 +30,31 @@ class App extends Component {
                 src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"
                 preload
               />
-              <p>Q</p>
+              Q
             </div>
-            <div class="drum-pad" id="">
-              <p>W</p>
+            <div class="drum-pad" id="test2" onClick={this.onClick}>
+              W
             </div>
-            <div class="drum-pad" id="">
-              <p>E</p>
+            <div class="drum-pad" id="test3" onClick={this.onClick}>
+              E
             </div>
-            <div class="drum-pad" id="">
-              <p>A</p>
+            <div class="drum-pad" id="test4" onClick={this.onClick}>
+              A
             </div>
-            <div class="drum-pad" id="">
-              <p>S</p>
+            <div class="drum-pad" id="test5" onClick={this.onClick}>
+              S
             </div>
-            <div class="drum-pad" id="">
-              <p>D</p>
+            <div class="drum-pad" id="test6" onClick={this.onClick}>
+              D
             </div>
-            <div class="drum-pad" id="">
-              <p>Z</p>
+            <div class="drum-pad" id="test7" onClick={this.onClick}>
+              Z
             </div>
-            <div class="drum-pad" id="">
-              <p>X</p>
+            <div class="drum-pad" id="test8" onClick={this.onClick}>
+              X
             </div>
-            <div class="drum-pad" id="">
-              <p>C</p>
+            <div class="drum-pad" id="test9" onClick={this.onClick}>
+              C
             </div>
           </div>
         </div>

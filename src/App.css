@@ -28,16 +28,12 @@ html {
 
 .drum-pad{
   display: flex;
+  justify-content: center;
   align-items: center;
   border-radius: 6px;
-  font-size: 20px;
+  font-size: 1.6em;
   width: 60px;
   height: 90px;
   margin: .5em;
   background-color: white;
-}
-
-.drum-pad p {
-  margin: auto;
-  font-size: 1.4em;
 }
