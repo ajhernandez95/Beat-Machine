@@ -116,14 +116,10 @@ class App extends React.Component {
           {bank.map(x => <Drumpad id={x.id} src={x.src} letter={x.letter} keyCode={x.keyCode}/>)}
         </div>
       </div>
-    );
-  }
+  );
+}
 }
 
 
+
 export default App;
-//make beat sound's div id's and p id's 
-
-// use if statement for keycode for onClick method for sounds stolen from FCC BeatMacine
-
-//sound for test --- 'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3'
