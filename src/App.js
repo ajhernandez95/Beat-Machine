@@ -1,67 +1,125 @@
 import React, { Component } from "react";
 import "./App.css";
 
-//let audio = new Audio('https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3')
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.onClick = this.onClick.bind(this)
-   
+const bank = [
+  {
+    keyCode: 81,
+    letter: "Q",
+    id: "Heater-1",
+    src: "https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"
+  },
+  {
+    keyCode: 87,
+    letter: "W",
+    id: "Heater-2",
+    src: "https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"
+  },
+  {
+    keyCode: 69,
+    letter: "E",
+    id: "Heater-3",
+    src: "https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3"
+  },
+  {
+    keyCode: 65,
+    letter: "A",
+    id: "Heater-4",
+    src: "https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3"
+  },
+  {
+    keyCode: 83,
+    letter: "S",
+    id: "Clap",
+    src: "https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3"
+  },
+  {
+    keyCode: 68,
+    letter: "D",
+    id: "Open-HH",
+    src: "https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3"
+  },
+  {
+    keyCode: 90,
+    letter: "Z",
+    id: "Kick-n'-Hat",
+    src: "https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3"
+  },
+  {
+    keyCode: 88,
+    letter: "X",
+    id: "Kick",
+    src: "https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"
+  },
+  {
+    keyCode: 67,
+    letter: "C",
+    id: "Closed-HH",
+    src: "https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"
   }
+];
 
 
-  onClick(e) {
-    let itemId = JSON.stringify(e.target.getAttribute('id'))
-    document.getElementById(itemId).style.backgroundColor = 'blue'
-    console.log(itemId)
-    
-    
+class Drumpad extends React.Component {
+  constructor(props){
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
   }
+  
+  //add componentdidmount/unmount and addeventlistener for handlekeypress
+  componentDidMount(){
+    document.addEventListener('keydown', this.handleKeyPress)
+    window.focus()
+  }
+  
+  componentWillUnmount(){
+    document.removeEvenetListener('keydown',this.handleKeyPress)
+  }
+  
+  handleClick() {
+    this.audio.play()
+    this.audio.currentTime = 0
+  }
+  
+  handleKeyPress(e) {
+   if(e.keyCode === this.props.letter.charCodeAt()) {
+     this.audio.play() 
+     this.audio.currentTime = 0
+   }
+  }
+  
+  
+  
+
+  render() {
+    return (
+      <div className="drum-pad" id={this.props.id} onClick={this.handleClick} onKeyPress={this.handleKeyPress}>
+        <h1 className='letter'>{this.props.letter}</h1>
+        <audio
+          ref={ref => (this.audio = ref)}
+          src={this.props.src}
+          id={this.props.letter}
+          className="clip"
+        >
+          No music support
+        </audio>
+      </div>
+    );
+  }
+}
+
+class App extends React.Component {
   render() {
     return (
       <div id="drum-machine">
         <div id="display">
-          <div class="drum-pad-wrapper">
-            <div class="drum-pad" id="test" onClick={this.onClick}>
-              <audio 
-                id="sound"
-                src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"
-                preload
-              />
-              Q
-            </div>
-            <div class="drum-pad" id="test2" onClick={this.onClick}>
-              W
-            </div>
-            <div class="drum-pad" id="test3" onClick={this.onClick}>
-              E
-            </div>
-            <div class="drum-pad" id="test4" onClick={this.onClick}>
-              A
-            </div>
-            <div class="drum-pad" id="test5" onClick={this.onClick}>
-              S
-            </div>
-            <div class="drum-pad" id="test6" onClick={this.onClick}>
-              D
-            </div>
-            <div class="drum-pad" id="test7" onClick={this.onClick}>
-              Z
-            </div>
-            <div class="drum-pad" id="test8" onClick={this.onClick}>
-              X
-            </div>
-            <div class="drum-pad" id="test9" onClick={this.onClick}>
-              C
-            </div>
-          </div>
+          {bank.map(x => <Drumpad id={x.id} src={x.src} letter={x.letter} keyCode={x.keyCode}/>)}
         </div>
       </div>
     );
   }
 }
+
 
 export default App;
 //make beat sound's div id's and p id's 

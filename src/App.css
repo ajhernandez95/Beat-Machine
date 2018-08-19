@@ -1,39 +1,27 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100%;
+  display: grid;
 }
 
-#display {
-  width: 600px;
+body {
+  margin: auto;
+}
+
+#root {
+  height: 100%;
+  display: block;
+}
+
+#drum-machine{
+  min-width: 650px;
   height: 350px;
-  background-color: #8a8787;
+  display: block;
+  background: blue;
 }
 
-.drum-pad-wrapper{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  width: 50%;
-  height: 100%;
-  background-color: pink;
-}
-
-.drum-pad{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 6px;
-  font-size: 1.6em;
-  width: 60px;
-  height: 90px;
-  margin: .5em;
-  background-color: white;
-}
