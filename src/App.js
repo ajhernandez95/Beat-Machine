@@ -58,43 +58,44 @@ const bank = [
   }
 ];
 
+class Drumpad extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
 
-class Drumpad extends React.Component {
-  constructor(props){
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-    this.handleKeyPress = this.handleKeyPress.bind(this)
-  }
-  
   //add componentdidmount/unmount and addeventlistener for handlekeypress
-  componentDidMount(){
-    document.addEventListener('keydown', this.handleKeyPress)
-    window.focus()
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyPress);
+    window.focus();
   }
-  
-  componentWillUnmount(){
-    document.removeEvenetListener('keydown',this.handleKeyPress)
+
+  componentWillUnmount() {
+    document.removeEvenetListener("keydown", this.handleKeyPress);
   }
-  
+
   handleClick() {
-    this.audio.play()
-    this.audio.currentTime = 0
+    this.audio.play();
+    this.audio.currentTime = 0;
   }
-  
+
   handleKeyPress(e) {
-   if(e.keyCode === this.props.letter.charCodeAt()) {
-     this.audio.play() 
-     this.audio.currentTime = 0
-   }
+    if (e.keyCode === this.props.letter.charCodeAt()) {
+      this.audio.play();
+      this.audio.currentTime = 0;
+    }
   }
-  
-  
-  
 
   render() {
     return (
-      <div className="drum-pad" id={this.props.id} onClick={this.handleClick} onKeyPress={this.handleKeyPress}>
-        <h1 className='letter'>{this.props.letter}</h1>
+      <div
+        className="drum-pad"
+        id={this.props.id}
+        onClick={this.handleClick}
+        onKeyPress={this.handleKeyPress}
+      >
+        <h1 className="letter">{this.props.letter}</h1>
         <audio
           ref={ref => (this.audio = ref)}
           src={this.props.src}
@@ -108,18 +109,48 @@ class Drumpad extends React.Component {
   }
 }
 
-class App extends React.Component {
+class Controls extends Component {
+  render() {
+    return (
+      <div className="controls">
+        <h2 className='.power'>Power</h2>
+        <div className="power-switch-wrap"> 
+        <div className='power-switch' />
+        </div>
+        <h2 className='.sound'>Sound: </h2>
+        <h3 className='.sound-input'>{this.props.sound}</h3>
+      </div>
+    );
+  }
+}
+
+class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      sound: 'Change Sound'
+
+    }
+  }
   render() {
     return (
       <div id="drum-machine">
         <div id="display">
-          {bank.map(x => <Drumpad id={x.id} src={x.src} letter={x.letter} keyCode={x.keyCode}/>)}
+          {bank.map(x => (
+            <Drumpad
+              id={x.id}
+              src={x.src}
+              letter={x.letter}
+              keyCode={x.keyCode}
+            />
+          ))}
+        </div>
+        <div className="controls-wrapper">
+          <Controls sound={this.state.sound}/>
         </div>
       </div>
-  );
+    );
+  }
 }
-}
-
-
 
 export default App;

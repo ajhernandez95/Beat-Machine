@@ -11,17 +11,79 @@ html {
 
 body {
   margin: auto;
+  background: black;
 }
 
-#root {
-  height: 100%;
-  display: block;
-}
-
-#drum-machine{
+#drum-machine {
   min-width: 650px;
   height: 350px;
-  display: block;
-  background: blue;
+  background: #dcdcdc;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
+#display {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  cursor: pointer;
+}
+
+.drum-pad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.controls-wrapper {
+  background: blue;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.controls {
+ display: grid;
+ grid-template-areas:
+ 'power power' 
+ 'power-switch power-switch'
+ 'sound sound-input';
+ grid-gap: 2em;
+}
+ /* arranging template */
+.controls > h2:nth-of-type(1) {
+  grid-area: power;
+  text-align: center;
+  color: pink;
+} 
+
+ .controls > div {
+  grid-area: power-switch;
+  margin: auto;
+} 
+
+.controls > h2:nth-of-type(2) {
+  grid-area: sound;
+}
+/* center h3 !!!!!!!!! */
+.controls > h3 {
+  grid-area: sound-input;
+}
+
+.power-switch-wrap {
+  width: 100px;
+  height: 30px;
+  background: red;
+}
+
+.power-switch{
+  height: 30px;
+  width: 50px;
+  background: white;
+}
